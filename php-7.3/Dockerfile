@@ -1,4 +1,4 @@
-FROM php:apache
+FROM php:7.3-apache
 
 # Install Postgre PDO
 RUN apt-get update && apt-get install -y build-essential libpq-dev git curl gnupg gnupg2 gnupg1 && docker-php-ext-install pdo pdo_pgsql
