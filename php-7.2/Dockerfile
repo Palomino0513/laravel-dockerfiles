@@ -34,6 +34,10 @@ RUN docker-php-ext-configure zip --with-libzip \
 		--with-freetype-dir=/usr/include/freetype2 && \
 	docker-php-ext-install gd
 
+RUN apt-get update && apt-get install -y libxml2-dev \
+    && pear install -a SOAP-0.13.0 \
+    && docker-php-ext-install soap;
+
 # install composer
 RUN curl -sSL --show-error https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
