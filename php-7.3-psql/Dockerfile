@@ -1,6 +1,6 @@
 FROM php:7.3-fpm
 
-# Install packages
+# Install Postgre PDO
 RUN apt-get update && \
 	apt-get upgrade -y && \
 	apt-get install -y --no-install-recommends \
@@ -28,7 +28,7 @@ RUN apt-get update && \
 
 # Install the PHP pdo_mysql extention
 RUN docker-php-ext-configure zip --with-libzip \
-	&& docker-php-ext-install mysqli pdo pdo_mysql zip \
+	&& docker-php-ext-install pdo pdo_pgsql zip \
 	&& docker-php-ext-configure gd \
 		--with-jpeg-dir=/usr/lib \
 		--with-freetype-dir=/usr/include/freetype2 && \
